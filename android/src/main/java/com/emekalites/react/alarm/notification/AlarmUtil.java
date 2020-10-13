@@ -120,7 +120,6 @@ class AlarmUtil {
 
     void setBootReceiver() {
         ArrayList<AlarmModel> alarms = getAlarmDB().getAlarmList(1);
-        Log.e("________>",""+alarms.size());
         if (alarms.size() > 0) {
             enableBootReceiver(mContext);
         } else {
@@ -310,6 +309,8 @@ class AlarmUtil {
         PackageManager pm = context.getPackageManager();
 
         int setting = pm.getComponentEnabledSetting(receiver);
+        Log.d("ABCDE", String.valueOf(setting));
+        Log.d("ABCDE", String.valueOf(pm.getComponentEnabledSetting(receiver)));
         if (setting == PackageManager.COMPONENT_ENABLED_STATE_DISABLED) {
             pm.setComponentEnabledSetting(receiver,
                     PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
