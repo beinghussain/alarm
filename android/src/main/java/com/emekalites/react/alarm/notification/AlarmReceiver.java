@@ -19,6 +19,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        Log.e("MUMINO","ALARM RECEIEVED");
         if (intent != null) {
             final AlarmDatabase alarmDB = new AlarmDatabase(context);
             AlarmUtil alarmUtil = new AlarmUtil((Application) context.getApplicationContext());
