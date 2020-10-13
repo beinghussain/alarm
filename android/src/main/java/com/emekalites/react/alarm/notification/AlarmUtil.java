@@ -120,7 +120,7 @@ class AlarmUtil {
 
     void setBootReceiver() {
         ArrayList<AlarmModel> alarms = getAlarmDB().getAlarmList(1);
-        Log.e("________>",""+alarms.size())
+        Log.e("________>",""+alarms.size());
         if (alarms.size() > 0) {
             enableBootReceiver(mContext);
         } else {
