@@ -411,7 +411,6 @@ class AlarmUtil {
                     .setSound(null)
                     .setDeleteIntent(createOnDismissedIntent(mContext, alarm.getId()));
 
-            long vibration = (long) alarm.getVibration();
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 NotificationChannel mChannel = new NotificationChannel(channelID, "Namaz Notification", NotificationManager.IMPORTANCE_HIGH);
@@ -425,23 +424,10 @@ class AlarmUtil {
                 if(!mChannel.canBypassDnd()){
                     mChannel.setBypassDnd(alarm.isBypassDnd());
                 }
-
-                mChannel.setVibrationPattern(null);
-
-                // play vibration
-                if (alarm.isVibrate()) {
-                    Vibrator vibrator = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
-                    if (vibrator.hasVibrator()) {
-                        vibrator.vibrate(VibrationEffect.createWaveform(vibrationPattern, 0));
-                    }
-                }
-
+               
                 mNotificationManager.createNotificationChannel(mChannel);
                 mBuilder.setChannelId(channelID);
-            } else {
-                // set vibration
-                mBuilder.setVibrate(alarm.isVibrate() ? vibrationPattern : null);
-            }
+            } 
 
             //color
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
