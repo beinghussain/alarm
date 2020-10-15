@@ -413,8 +413,6 @@ class AlarmUtil {
 
             long vibration = (long) alarm.getVibration();
 
-            long[] vibrationPattern = vibration == 0 ? DEFAULT_VIBRATE_PATTERN : new long[]{0, vibration, 1000, vibration};
-
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 NotificationChannel mChannel = new NotificationChannel(channelID, "Namaz Notification", NotificationManager.IMPORTANCE_HIGH);
                 mChannel.enableLights(true);
